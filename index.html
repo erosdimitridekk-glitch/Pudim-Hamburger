@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podium Burger | Santarém-PA</title>
+<style>
+:root{
+  --yellow:#ffd900;--red:#df1f26;--black:#111;--white:#fff;
+  --cream:#fffdf5;--gray:#666;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:#111}
+a{text-decoration:none;color:inherit}
+.container{max-width:1120px;margin:auto;padding:0 20px}
+
+/* NAV */
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--yellow)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900}
+.brand img{width:58px;height:58px;border-radius:50%;object-fit:cover}
+.navlinks{display:flex;gap:28px;font-weight:700}
+.navlinks a:hover{color:var(--red)}
+.whats{background:var(--yellow);padding:13px 18px;border-radius:30px;font-weight:900}
+.menu-btn{display:none;font-size:28px;background:none;border:0}
+
+/* HERO */
+.hero{min-height:570px;position:relative;overflow:hidden;background:#f2bd58}
+.hero-bg{position:absolute;inset:0;background:
+ linear-gradient(90deg,rgba(255,222,150,.97) 0%,rgba(255,203,100,.82) 42%,rgba(0,0,0,.05) 100%),
+ url("hero-burger.jpg") center/cover no-repeat}
+.hero-content{position:relative;z-index:2;padding:90px 20px 80px}
+.kicker{display:inline-block;background:var(--red);color:#fff;padding:8px 13px;border-radius:20px;font-weight:900;font-size:13px}
+h1{font-size:clamp(45px,7vw,78px);line-height:.93;margin:20px 0 15px;max-width:610px;font-weight:1000}
+h1 span{color:var(--red)}
+.hero p{max-width:520px;font-size:18px;line-height:1.55;color:#222}
+.cta{display:inline-block;background:var(--yellow);border:2px solid #111;padding:15px 22px;border-radius:12px;font-weight:900;margin-top:12px;box-shadow:0 5px 0 #111}
+.cta:active{transform:translateY(3px);box-shadow:0 2px 0 #111}
+
+/* tropical strip */
+.tropical{height:18px;background:linear-gradient(90deg,var(--red),var(--yellow),var(--red),var(--yellow),var(--red))}
+
+/* MENU */
+section{padding:70px 0}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title h2{font-size:42px;margin:0 0 8px}
+.section-title p{color:var(--gray);margin:0}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cat{background:#fff;border:2px solid var(--yellow);border-radius:22px;padding:24px;text-align:center;transition:.2s}
+.cat:hover{transform:translateY(-5px);border-color:var(--red)}
+.cat-icon{font-size:48px;margin-bottom:8px}
+.cat h3{margin:5px 0 12px}
+.cat button{border:0;background:var(--red);color:#fff;border-radius:25px;padding:11px 18px;font-weight:900;cursor:pointer}
+
+/* DESTAQUES */
+.highlights{background:#111;color:#fff}
+.highlights .section-title p{color:#bbb}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{background:#191919;border:1px solid #5a5100;border-radius:16px;overflow:hidden}
+.product img{width:100%;height:180px;object-fit:cover;display:block}
+.product-body{padding:17px}
+.product h3{margin:0 0 7px}
+.product p{color:#bbb;font-size:14px;line-height:1.4;min-height:42px}
+.price{display:inline-block;background:var(--yellow);color:#111;font-weight:900;padding:8px 11px;border-radius:7px}
+
+/* INFO */
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.info-card{background:#fff;border-radius:18px;padding:22px;border:1px solid #ddd}
+.info-card .icon{font-size:30px}
+.info-card h3{margin:8px 0}
+.info-card p{color:var(--gray);line-height:1.5;margin:0}
+
+/* ORDER */
+.order{background:#fff0a6}
+.order-box{text-align:center;background:#fff;border:3px solid var(--yellow);border-radius:25px;padding:40px 20px}
+.order-box h2{font-size:38px;margin:0 0 10px}
+.order-box p{color:var(--gray)}
+.order-btn{display:inline-block;background:#25d366;color:#fff;padding:15px 24px;border-radius:12px;font-weight:900;margin-top:12px}
+
+/* FOOTER */
+footer{background:#111;color:#fff;padding:40px 0;text-align:center;position:relative;overflow:hidden}
+footer h2{margin:0;color:#fff}
+footer strong{color:var(--yellow)}
+.footer-wave{height:12px;background:linear-gradient(90deg,var(--yellow),var(--red),var(--yellow),var(--red),var(--yellow))}
+.note{font-size:12px;color:#888;margin-top:20px}
+
+/* modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:#fff;color:#111;max-width:500px;width:100%;border-radius:22px;padding:25px;position:relative}
+.close{position:absolute;right:15px;top:12px;border:0;background:none;font-size:25px;cursor:pointer}
+.modal-box h2{margin-top:5px}.modal-list{display:grid;gap:10px;margin-top:18px}
+.modal-item{padding:14px;background:#fff8c9;border-radius:12px;display:flex;justify-content:space-between;font-weight:700}
+.demo{font-size:12px;color:#777;margin-top:16px}
+
+/* MOBILE */
+@media(max-width:800px){
+ .navlinks,.nav>.whats{display:none}.menu-btn{display:block}
+ .hero{min-height:620px}.hero-bg{background:
+ linear-gradient(180deg,rgba(255,214,120,.95) 0%,rgba(255,214,120,.7) 55%,rgba(0,0,0,.12) 100%),
+ url("hero-burger.jpg") center/cover}
+ .hero-content{padding-top:75px}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .products{grid-template-columns:repeat(2,1fr)}
+ .info{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+ .categories,.products,.info{grid-template-columns:1fr}
+ .hero{min-height:650px}.hero-content{padding-top:55px}
+ .section-title h2{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio">
+      <img src="podium-especial.jpg" alt="Podium Burger">
+      <span>PODIUM<br>BURGER</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#inicio">Início</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#destaques">Destaques</a>
+      <a href="#localizacao">Localização</a>
+    </nav>
+    <a class="whats" href="https://wa.me/559391206932" target="_blank">💬 Pedir pelo WhatsApp</a>
+    <button class="menu-btn" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <span class="kicker">🍔 PODIUM BURGER • SANTARÉM-PA</span>
+    <h1>O verdadeiro<br><span>sabor do paraíso.</span></h1>
+    <p>Hambúrgueres, porções e bebidas com aquela pegada tropical que combina com Santarém.</p>
+    <a class="cta" href="#cardapio">VER CARDÁPIO ↓</a>
+  </div>
+</section>
+
+<div class="tropical"></div>
+
+<section id="cardapio">
+  <div class="container">
+    <div class="section-title">
+      <h2>🌴 Nosso Cardápio</h2>
+      <p>Escolha uma categoria para conhecer as opções.</p>
+    </div>
+
+    <div class="categories">
+      <div class="cat"><div class="cat-icon">🍔</div><h3>Hambúrgueres</h3><button onclick="openMenu('Hambúrgueres')">Ver opções →</button></div>
+      <div class="cat"><div class="cat-icon">🍟</div><h3>Porções</h3><button onclick="openMenu('Porções')">Ver opções →</button></div>
+      <div class="cat"><div class="cat-icon">🥤</div><h3>Bebidas</h3><button onclick="openMenu('Bebidas')">Ver opções →</button></div>
+      <div class="cat"><div class="cat-icon">🍔🍟</div><h3>Combos</h3><button onclick="openMenu('Combos')">Ver opções →</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="destaques" class="highlights">
+  <div class="container">
+    <div class="section-title">
+      <h2>⭐ Destaques</h2>
+      <p>Algumas opções para deixar o cliente com água na boca.</p>
+    </div>
+
+    <div class="products">
+      <article class="product">
+        <img src="podium-especial.jpg" alt="Podium Especial">
+        <div class="product-body"><h3>Podium Especial</h3><p>Blend 150g, queijo cheddar, bacon, alface, tomate e molho da casa.</p><span class="price">R$ 24,90</span></div>
+      </article>
+      <article class="product">
+        <img src="x-bacon.jpg" alt="X-Bacon">
+        <div class="product-body"><h3>X-Bacon</h3><p>Blend 150g, queijo cheddar, bacon e molho da casa.</p><span class="price">R$ 27,90</span></div>
+      </article>
+      <article class="product">
+        <img src="batata.jpg" alt="Porção de batata">
+        <div class="product-body"><h3>Porção de Batata</h3><p>Crocante por fora e macia por dentro.</p><span class="price">R$ 14,90</span></div>
+      </article>
+      <article class="product">
+        <img src="refri.jpg" alt="Refrigerante">
+        <div class="product-body"><h3>Refrigerante</h3><p>Diversos sabores para acompanhar o seu pedido.</p><span class="price">R$ 6,00</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="localizacao">
+  <div class="container">
+    <div class="section-title">
+      <h2>📍 Podium Burger</h2>
+      <p>Informações da demonstração.</p>
+    </div>
+    <div class="info">
+      <div class="info-card"><div class="icon">🕐</div><h3>Horário</h3><p>Aberto 24 horas<br><small>Informação de demonstração.</small></p></div>
+      <div class="info-card"><div class="icon">📍</div><h3>Endereço</h3><p>Rua Angélica, 1502<br>Santarém — PA</p></div>
+      <div class="info-card"><div class="icon">📱</div><h3>WhatsApp</h3><p>(93) 9120-6932</p></div>
+      <div class="info-card"><div class="icon">📸</div><h3>Instagram</h3><p>@podium_burgers</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="order">
+  <div class="container">
+    <div class="order-box">
+      <h2>Deu fome? 🍔</h2>
+      <p>Na versão real, este botão pode abrir o pedido diretamente no WhatsApp da Podium Burger.</p>
+      <a class="order-btn" href="https://wa.me/559391206932" target="_blank">📲 PEDIR PELO WHATSAPP</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="footer-wave"></div>
+<footer>
+  <div class="container">
+    <h2>PODIUM <strong>BURGER</strong></h2>
+    <p>SABOR • QUALIDADE • SEMPRE</p>
+    <div class="note">PROTÓTIPO FICTÍCIO — criado por Eros Editor. Produtos, preços e informações devem ser confirmados pela empresa antes da publicação.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeMenu()">×</button>
+    <h2 id="modalTitle">Cardápio</h2>
+    <div class="modal-list" id="modalList"></div>
+    <p class="demo">Valores e produtos desta demonstração são fictícios.</p>
+  </div>
+</div>
+
+<script>
+const menus={
+ "Hambúrgueres":[["Podium Especial","R$ 24,90"],["X-Bacon","R$ 27,90"],["Podium Duplo","R$ 34,90"]],
+ "Porções":[["Porção de Batata","R$ 14,90"],["Batata com Cheddar","R$ 19,90"]],
+ "Bebidas":[["Refrigerante lata","R$ 6,00"],["Água","R$ 4,00"],["Suco","R$ 8,00"]],
+ "Combos":[["Combo Podium Especial","R$ 34,90"],["Combo X-Bacon","R$ 37,90"]]
+};
+function openMenu(category){
+ document.getElementById("modalTitle").textContent=category;
+ document.getElementById("modalList").innerHTML=menus[category].map(i=>`<div class="modal-item"><span>${i[0]}</span><span>${i[1]}</span></div>`).join("");
+ document.getElementById("modal").classList.add("show");
+}
+function closeMenu(){document.getElementById("modal").classList.remove("show")}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeMenu()});
+</script>
+</body>
+</html>
